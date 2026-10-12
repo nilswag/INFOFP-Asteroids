@@ -3,7 +3,7 @@
 ### Handige links
 [Google docs (voor design document)](https://docs.google.com/document/d/1lJTVHJS7DN4oJKSycekHZ2kn07AqDf3oTPmoXGk2WEE/edit?usp=sharing)
 
-### Minimal requirements
+### Minimum requirements
 [] - Player. The player controls (at least) one character, using the keyboard.  
 [] - Enemies. The game has antagonistic characters in some sense, which try to make you lose the game. You should implement a minimal “intelligence” for those enemies.  
 [] - Randomness. The game has to include random components: the place where new enemies appear, the place where bonus are located, and things like that.  
