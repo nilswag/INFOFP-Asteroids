@@ -1,7 +1,7 @@
 # INFOFP Asteroids
 
 ### Handige links
-[Google docs](https://docs.google.com/document/d/1lJTVHJS7DN4oJKSycekHZ2kn07AqDf3oTPmoXGk2WEE/edit?usp=sharing)
+[Google docs (voor design document)](https://docs.google.com/document/d/1lJTVHJS7DN4oJKSycekHZ2kn07AqDf3oTPmoXGk2WEE/edit?usp=sharing)
 
 ### Minimal requirements
 [] - Player. The player controls (at least) one character, using the keyboard.  
