@@ -1,4 +1,4 @@
--- Defines all functions to move/control player, enemies and asteroids
+-- Handles state changes
 module Controller where
 
 updateShip :: Float -> Ship -> Ship

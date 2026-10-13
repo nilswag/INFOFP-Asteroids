@@ -1,1 +1,1 @@
--- Defines all functions to display game
+-- Handles displaying game state
