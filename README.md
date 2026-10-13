@@ -1,5 +1,11 @@
 # INFOFP Asteroids
 
+## Building and running
+
+    $ git clone https://github.com/nilswag/INFOFP-Asteroids asteroids  
+    $ cd asteroids    
+    $ cabal run  
+
 ### Handige links
 [Google docs (voor design document)](https://docs.google.com/document/d/1lJTVHJS7DN4oJKSycekHZ2kn07AqDf3oTPmoXGk2WEE/edit?usp=sharing)
 
