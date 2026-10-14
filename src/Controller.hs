@@ -8,4 +8,3 @@ handleInput = undefined
 
 step :: Float -> GameState -> IO GameState
 step = undefined
-

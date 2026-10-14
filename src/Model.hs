@@ -10,11 +10,13 @@ data GameState = GameState {
     score :: Int
 }
 
+
 data World = World {
     player :: Player,
     enemy :: Enemy,
     asteroids :: [Asteroid]
 }
+
 
 data Projectile = Projectile {
     projX :: Float,
@@ -24,6 +26,10 @@ data Projectile = Projectile {
     projTimeAlive :: Float
 }
 
+instance Moveable Projectile where
+    move = undefined
+
+
 data Enemy = Enemy {
     enemyX :: Float,
     enemyY :: Float,
@@ -31,6 +37,10 @@ data Enemy = Enemy {
     enemyAngle :: Float,
     enemyLives :: Int
 }
+
+instance Moveable Enemy where
+    move = undefined
+
 
 data Player = Player {
     playerX :: Float,
@@ -40,6 +50,12 @@ data Player = Player {
     playerLives :: Int
 }
 
+instance Moveable Player where
+    move = undefined
+
+
+data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
+
 data Asteroid = Asteroid {
     asteroidX :: Float,
     asteroidY :: Float,
@@ -48,4 +64,5 @@ data Asteroid = Asteroid {
     asteroidLives :: Int
 }
 
-data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
+instance Moveable Asteroid where
+    move = undefined
