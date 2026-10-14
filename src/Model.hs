@@ -21,7 +21,7 @@ data World = World {
 data Projectile = Projectile {
     projX :: Float,
     projY :: Float,
-    projVel :: Float,
+    projVel :: Vector,
     projAngle :: Float,
     projTimeAlive :: Float
 }
