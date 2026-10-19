@@ -8,14 +8,19 @@ import Controller
 
 main :: IO()
 main = do 
+        -- get desktop size to calculate center of screen
         (desktopWidth, desktopHeight) <- getScreenSize
 
+        -- initial screen size
         let screenSize@(screenWidth, screenHeight) = (1200, 1200)
+
+        -- calculate center of screen
         let screenPos = (
                 desktopWidth  `div` 2 - screenWidth  `div` 2, 
                 desktopHeight `div` 2 - screenHeight `div` 2
                 )
 
+        -- main loop
         playIO
             (InWindow "Asteroids" screenSize screenPos)
             black
@@ -26,6 +31,7 @@ main = do
             step
 
 
+-- initial state of game state
 initialState :: GameState
 initialState = GameState {
     world = initialWorld,
@@ -34,7 +40,7 @@ initialState = GameState {
     score = 0
 }
 
-
+-- initial state of world
 initialWorld :: World
 initialWorld = World {
     player = Player {
