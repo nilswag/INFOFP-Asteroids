@@ -1,3 +1,4 @@
+-- Defines moveable and turnable instances
 import Model
 
 class Moveable a where
