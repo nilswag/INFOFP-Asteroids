@@ -52,3 +52,17 @@ data Asteroid = Asteroid {
     asteroidType :: AsteroidType,
     asteroidLives :: Int
 }
+
+-- update player field by passing custom function
+-- works because records are syntactic sugar for generating functions named as fields
+updatePlayer :: (Player -> Player) -> GameState -> GameState
+updatePlayer f state =
+    state {
+        world = (world state) {
+            player = f (player (world state))
+        }
+    }
+
+-- get plater field by passing a custom function
+getPlayerField :: (Player -> a) -> GameState -> a
+getPlayerField f = f . player . world
