@@ -2,8 +2,12 @@
 module Model where
 import Graphics.Gloss (Vector)
 
+
 class Moveable a where
     move :: a -> Float -> a
+
+class Turnable a where
+    turn :: a -> Float -> Float -> a
 
 
 data GameState = GameState {
@@ -27,9 +31,6 @@ data Projectile = Projectile {
     projTimeAlive :: Float
 }
 
-instance Moveable Projectile where
-    move  = undefined
-
 
 data Enemy = Enemy {
     enemyX :: Float,
@@ -38,9 +39,6 @@ data Enemy = Enemy {
     enemyAngle :: Float,
     enemyLives :: Int
 }
-
-instance Moveable Enemy where
-    move = undefined
 
 
 data Player = Player {
@@ -51,17 +49,8 @@ data Player = Player {
     playerLives :: Int
 }
 
-instance Moveable Player where
-    move player@Player
-        {
-            playerX = x,
-            playerY = y,
-            playerVel = (vx, vy)
-        } dt = player { playerX = x + vx * dt, playerY = y + vy * dt }
-
 
 data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
-
 data Asteroid = Asteroid {
     asteroidX :: Float,
     asteroidY :: Float,
@@ -70,6 +59,3 @@ data Asteroid = Asteroid {
     asteroidType :: AsteroidType,
     asteroidLives :: Int
 }
-
-instance Moveable Asteroid where
-    move = undefined
