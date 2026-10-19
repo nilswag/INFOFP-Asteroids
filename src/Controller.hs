@@ -1,10 +1,10 @@
 -- Handles state changes
 module Controller where
-import GHC.Event
 import Model (GameState)
+import Graphics.Gloss.Interface.IO.Game
 
 handleInput :: Event -> GameState -> IO GameState
-handleInput = undefined
+handleInput _ state = pure state 
 
 step :: Float -> GameState -> IO GameState
-step = undefined
+step _ state = pure state
