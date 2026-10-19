@@ -28,22 +28,27 @@ accel = 150.0
 turnSpeed :: Float
 turnSpeed = 2.5
 
+-- get normalized axis to use in acceleration/velocity calculations
 axis :: Bool -> Bool -> Float
 axis pos neg = fromBool pos - fromBool neg
     where fromBool b = if b then 1 else 0
 
+-- physics step in main loop
 step :: Float -> GameState -> IO GameState
-step dt state = pure state { world = w' { player = move newPlayer dt } }
+step dt state = pure state { world = w' { player = move newPlayer dt } } -- update player
     where
         w' = world state
         p = player w'
         keys = keyboard state
 
+        -- calculate turning amount (velocity) and thrust amount (acceleration)
         turn = axis (a keys) (d keys) * turnSpeed * dt
         thrust = axis (w keys) False * accel * dt
 
-        angle' = playerAngle p + turn
+        -- apply velocity and turning
+        angle' = playerAngle p + turn -- (radians btw)
         (vx, vy) = playerVel p
         newVel = (vx + cos angle' * thrust, vy + sin angle' * thrust)
- 
+
+        -- update player
         newPlayer = p { playerAngle = angle', playerVel = newVel }
