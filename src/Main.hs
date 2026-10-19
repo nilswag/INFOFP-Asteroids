@@ -29,6 +29,8 @@ main = do
 initialState :: GameState
 initialState = GameState {
     world = initialWorld,
+    keyboard = initialKeyboard,
+
     score = 0
 }
 
@@ -38,7 +40,7 @@ initialWorld = World {
     player = Player {
         playerX = 0,
         playerY = 0,
-        playerVel = (0, 0),
+        playerVel = 0.0,
         playerAngle = 0,
         playerLives = 3
     },
@@ -46,10 +48,18 @@ initialWorld = World {
     enemy = Enemy {
         enemyX = 0,
         enemyY = 0,
-        enemyVel = (0, 0),
+        enemyVel = 0.0,
         enemyAngle = 0,
         enemyLives = 3
     },
 
     asteroids = []
+}
+
+initialKeyboard :: KeyboardState
+initialKeyboard = KeyboardState {
+    w = False,
+    a = False,
+    s = False,
+    d = False
 }

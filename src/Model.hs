@@ -1,9 +1,17 @@
 -- Defines all data types
 module Model where
 
+data KeyboardState = KeyboardState {
+    w :: Bool,
+    a :: Bool,
+    s :: Bool,
+    d :: Bool
+}
 
 data GameState = GameState {
     world :: World,
+    keyboard :: KeyboardState,
+
     score :: Int
 }
 
