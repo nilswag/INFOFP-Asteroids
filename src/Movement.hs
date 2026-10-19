@@ -1,7 +1,9 @@
 -- Defines moveable and turnable instances
 module Movement where
+
 import Model
 
+-- typeclass for movable types 
 class Moveable a where
     move :: a -> Float -> a
 
