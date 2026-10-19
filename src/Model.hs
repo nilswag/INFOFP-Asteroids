@@ -1,4 +1,4 @@
--- Defines all data types
+-- defines all data types
 module Model where
 
 import Graphics.Gloss.Data.Vector

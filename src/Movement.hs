@@ -1,4 +1,4 @@
--- Defines moveable and turnable instances
+-- defines moveable and turnable instances
 module Movement where
 
 import Model

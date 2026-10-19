@@ -1,4 +1,4 @@
--- Handles state changes
+-- handles state changes
 module Controller where
 
 import Graphics.Gloss.Interface.IO.Game
