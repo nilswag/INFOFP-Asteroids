@@ -5,6 +5,7 @@ import Graphics.Gloss (Vector)
 class Moveable a where
     move :: a -> Float -> a
 
+
 data GameState = GameState {
     world :: World,
     score :: Int
