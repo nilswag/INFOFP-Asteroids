@@ -13,11 +13,8 @@ renderSquare :: Float -> Float -> Float -> Float -> Color -> Picture
 renderSquare x y w h c = translate x y (square w h c)
 
 renderPlayer :: GameState -> Picture
-renderPlayer GameState
-    { world = World 
-        { player = Player 
-            { playerX = x,
-              playerY = y
-            }
-        }
-    } = renderSquare x y 64 64 red
+renderPlayer state = rotate angle (renderSquare x y 64 64 red)
+        where
+            x = getPlayerField playerX state
+            y = getPlayerField playerY state
+            angle = getPlayerField playerAngle state
