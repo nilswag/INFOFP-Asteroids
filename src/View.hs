@@ -1,7 +1,7 @@
 -- Handles displaying game state
 module View where
 import Model (GameState)
-import Graphics.Gloss (Picture)
+import Graphics.Gloss (Picture (Blank))
 
 view :: GameState -> IO Picture
-view = undefined
+view _ = pure Blank
