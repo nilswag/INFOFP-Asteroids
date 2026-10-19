@@ -66,6 +66,5 @@ initialKeyboard :: KeyboardState
 initialKeyboard = KeyboardState {
     w = False,
     a = False,
-    s = False,
     d = False
 }

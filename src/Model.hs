@@ -5,7 +5,6 @@ import Graphics.Gloss.Data.Vector
 data KeyboardState = KeyboardState {
     w :: Bool,
     a :: Bool,
-    s :: Bool,
     d :: Bool
 }
 

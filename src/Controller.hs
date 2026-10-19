@@ -1,7 +1,7 @@
 -- Handles state changes
 module Controller where
-import Graphics.Gloss.Interface.IO.Game
 
+import Graphics.Gloss.Interface.IO.Game
 import Model
 import Movement
 
@@ -13,10 +13,6 @@ handleInput (EventKey (Char 'w') Up _ _) state = pure state { keyboard = (keyboa
 -- handle a input
 handleInput (EventKey (Char 'a') Down _ _) state = pure state { keyboard = (keyboard state) { a = True } }
 handleInput (EventKey (Char 'a') Up _ _) state = pure state { keyboard = (keyboard state) { a = False } }
-
--- handle s input
-handleInput (EventKey (Char 's') Down _ _) state = pure state { keyboard = (keyboard state) { s = True } }
-handleInput (EventKey (Char 's') Up _ _) state = pure state { keyboard = (keyboard state) { s = False } }
 
 -- handle d input
 handleInput (EventKey (Char 'd') Down _ _) state = pure state { keyboard = (keyboard state) { d = True } }
@@ -44,7 +40,7 @@ step dt state = pure state { world = w' { player = move newPlayer dt } }
         keys = keyboard state
 
         turn = axis (a keys) (d keys) * turnSpeed * dt
-        thrust = axis (w keys) (s keys) * accel * dt
+        thrust = axis (w keys) False * accel * dt
 
         angle' = playerAngle p + turn
         (vx, vy) = playerVel p
