@@ -28,7 +28,7 @@ data Projectile = Projectile {
 }
 
 instance Moveable Projectile where
-    move = undefined
+    move  = undefined
 
 
 data Enemy = Enemy {
@@ -52,7 +52,12 @@ data Player = Player {
 }
 
 instance Moveable Player where
-    move = undefined
+    move player@Player
+        {
+            playerX = x,
+            playerY = y,
+            playerVel = (vx, vy)
+        } dt = player { playerX = x + vx * dt, playerY = y + vy * dt }
 
 
 data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
@@ -61,6 +66,7 @@ data Asteroid = Asteroid {
     asteroidX :: Float,
     asteroidY :: Float,
     asteroidVel :: Vector,
+    asteroidAngle :: Float,
     asteroidType :: AsteroidType,
     asteroidLives :: Int
 }

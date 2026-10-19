@@ -1,6 +1,6 @@
 -- Handles state changes
 module Controller where
-import Model (GameState)
+import Model
 import Graphics.Gloss.Interface.IO.Game
 
 handleInput :: Event -> GameState -> IO GameState
