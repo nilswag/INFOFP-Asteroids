@@ -1,7 +1,7 @@
 module Main (main) where
+
 import Graphics.Gloss.Interface.Environment (getScreenSize)
 import Graphics.Gloss.Interface.IO.Game
-
 import View 
 import Model
 import Controller
