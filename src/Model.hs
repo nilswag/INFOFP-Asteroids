@@ -1,13 +1,16 @@
 -- Defines all data types
 module Model where
+
 import Graphics.Gloss.Data.Vector
 
+-- keyboard state
 data KeyboardState = KeyboardState {
     w :: Bool,
     a :: Bool,
     d :: Bool
 }
 
+-- game state
 data GameState = GameState {
     world :: World,
     keyboard :: KeyboardState,
@@ -16,13 +19,14 @@ data GameState = GameState {
 }
 
 
+-- world state
 data World = World {
     player :: Player,
     enemy :: Enemy,
     asteroids :: [Asteroid]
 }
 
-
+-- projectile (e.g. bullets)
 data Projectile = Projectile {
     projX :: Float,
     projY :: Float,
@@ -31,7 +35,7 @@ data Projectile = Projectile {
     projTimeAlive :: Float
 }
 
-
+-- enemy (specifically enemy ship)
 data Enemy = Enemy {
     enemyX :: Float,
     enemyY :: Float,
@@ -40,7 +44,7 @@ data Enemy = Enemy {
     enemyLives :: Int
 }
 
-
+-- player (ship)
 data Player = Player {
     playerX :: Float,
     playerY :: Float,
@@ -49,7 +53,7 @@ data Player = Player {
     playerLives :: Int
 }
 
-
+-- asteroid and its type
 data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
 data Asteroid = Asteroid {
     asteroidX :: Float,

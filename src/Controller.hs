@@ -35,7 +35,7 @@ axis pos neg = fromBool pos - fromBool neg
 
 -- physics step in main loop
 step :: Float -> GameState -> IO GameState
-step dt state = pure state { world = w' { player = move newPlayer dt } } -- update player
+step dt state = pure (updatePlayer (\_ -> move newPlayer dt) state) -- update player
     where
         w' = world state
         p = player w'
