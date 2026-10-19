@@ -3,13 +3,6 @@ module Model where
 import Graphics.Gloss (Vector)
 
 
-class Moveable a where
-    move :: a -> Float -> a
-
-class Turnable a where
-    turn :: a -> Float -> Float -> a
-
-
 data GameState = GameState {
     world :: World,
     score :: Int
