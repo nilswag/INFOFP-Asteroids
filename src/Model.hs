@@ -1,5 +1,6 @@
 -- Defines all data types
 module Model where
+import Graphics.Gloss.Data.Vector
 
 data KeyboardState = KeyboardState {
     w :: Bool,
@@ -26,7 +27,7 @@ data World = World {
 data Projectile = Projectile {
     projX :: Float,
     projY :: Float,
-    projVel :: Float,
+    projVel :: Vector,
     projAngle :: Float,
     projTimeAlive :: Float
 }
@@ -35,7 +36,7 @@ data Projectile = Projectile {
 data Enemy = Enemy {
     enemyX :: Float,
     enemyY :: Float,
-    enemyVel :: Float,
+    enemyVel :: Vector,
     enemyAngle :: Float,
     enemyLives :: Int
 }
@@ -44,7 +45,7 @@ data Enemy = Enemy {
 data Player = Player {
     playerX :: Float,
     playerY :: Float,
-    playerVel :: Float,
+    playerVel :: Vector,
     playerAngle :: Float,
     playerLives :: Int
 }
@@ -54,7 +55,7 @@ data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
 data Asteroid = Asteroid {
     asteroidX :: Float,
     asteroidY :: Float,
-    asteroidVel :: Float,
+    asteroidVel :: Vector,
     asteroidAngle :: Float,
     asteroidType :: AsteroidType,
     asteroidLives :: Int

@@ -24,31 +24,30 @@ handleInput (EventKey (Char 'd') Up _ _) state = pure state { keyboard = (keyboa
 
 handleInput _ state = pure state
 
-
+-- pixels per second per second
 accel :: Float
-accel = 50.0
+accel = 150.0
 
+-- radians per second
 turnSpeed :: Float
-turnSpeed = 50.0
+turnSpeed = 2.5
 
+axis :: Bool -> Bool -> Float
+axis pos neg = fromBool pos - fromBool neg
+    where fromBool b = if b then 1 else 0
 
 step :: Float -> GameState -> IO GameState
-step dt state = pure state { world = (world state)
-        {
-            player = move newPlayer dt
-        }
-    }
-
+step dt state = pure state { world = w' { player = move newPlayer dt } }
     where
-        p = player (world state)
+        w' = world state
+        p = player w'
         keys = keyboard state
-        
-        newPlayer = p {
-            playerAngle = 
-                (if a keys then turnSpeed * dt else 0) - 
-                ((if d keys then turnSpeed * dt else 0))
 
-            , playerVel = playerVel p 
-                + (if w keys then accel * dt else 0)
-                - (if s keys then accel * dt else 0)
-        }
+        turn = axis (a keys) (d keys) * turnSpeed * dt
+        thrust = axis (w keys) (s keys) * accel * dt
+
+        angle' = playerAngle p + turn
+        (vx, vy) = playerVel p
+        newVel = (vx + cos angle' * thrust, vy + sin angle' * thrust)
+ 
+        newPlayer = p { playerAngle = angle', playerVel = newVel }

@@ -19,7 +19,7 @@ main = do
         playIO
             (InWindow "Asteroids" screenSize screenPos)
             black
-            60
+            240
             initialState
             view
             handleInput
@@ -40,7 +40,7 @@ initialWorld = World {
     player = Player {
         playerX = 0,
         playerY = 0,
-        playerVel = 0.0,
+        playerVel = (0.0, 0.0),
         playerAngle = 0,
         playerLives = 3
     },
@@ -48,7 +48,7 @@ initialWorld = World {
     enemy = Enemy {
         enemyX = 0,
         enemyY = 0,
-        enemyVel = 0.0,
+        enemyVel = (0.0, 0.0),
         enemyAngle = 0,
         enemyLives = 3
     },

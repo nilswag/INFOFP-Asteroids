@@ -5,12 +5,12 @@ import Model
 class Moveable a where
     move :: a -> Float -> a
 
+-- moves player based on x and y velocity
 instance Moveable Player where
     move p@Player
         {
             playerX = x,
             playerY = y,
-            playerVel = vel,
-            playerAngle = angle
-        } dt = p { playerX = x + cos angle * vel * dt, playerY = y + sin angle * vel * dt }
+            playerVel = (vx, vy)
+        } dt = p { playerX = x + vx * dt, playerY = y + vy * dt }
     
