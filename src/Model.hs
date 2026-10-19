@@ -7,14 +7,14 @@ import Graphics.Gloss.Data.Vector
 data KeyboardState = KeyboardState {
     w :: Bool,
     a :: Bool,
-    d :: Bool
+    d :: Bool,
+    space :: Bool
 }
 
 -- game state
 data GameState = GameState {
     world :: World,
     keyboard :: KeyboardState,
-
     score :: Int
 }
 
@@ -23,7 +23,8 @@ data GameState = GameState {
 data World = World {
     player :: Player,
     enemy :: Enemy,
-    asteroids :: [Asteroid]
+    asteroids :: [Asteroid],
+    projectiles :: [Projectile]
 }
 
 -- projectile (e.g. bullets)
@@ -55,6 +56,7 @@ data Player = Player {
 
 -- asteroid and its type
 data AsteroidType = AsteroidLarge | AsteroidMedium | AsteroidSmall
+    deriving (Eq)
 data Asteroid = Asteroid {
     asteroidX :: Float,
     asteroidY :: Float,
@@ -64,6 +66,8 @@ data Asteroid = Asteroid {
     asteroidLives :: Int
 }
 
+
+-- SETTERS
 -- update player field by passing custom function
 -- works because records are syntactic sugar for generating functions named as fields
 updatePlayer :: (Player -> Player) -> GameState -> GameState
@@ -74,6 +78,34 @@ updatePlayer f state =
         }
     }
 
--- get plater field by passing a custom function
+-- update asteroids field by passing custom function
+updateAsteroids :: ([Asteroid] -> [Asteroid]) -> GameState -> GameState
+updateAsteroids f state =
+    state {
+        world = (world state) {
+            asteroids = f (asteroids (world state))
+        }
+    }
+
+updateEnemy :: (Enemy -> Enemy) -> GameState -> GameState
+updateEnemy f state =
+    state {
+        world = (world state) {
+            enemy = f (enemy (world state))
+        }
+    }
+
+updateProjectiles :: ([Projectile] -> [Projectile]) -> GameState -> GameState
+updateProjectiles f state =
+    state {
+        world = (world state) {
+            projectiles = f (projectiles (world state))
+        }
+    }
+    
+
+
+-- GETTERS
+-- get player field by passing a custom function
 getPlayerField :: (Player -> a) -> GameState -> a
 getPlayerField f = f . player . world

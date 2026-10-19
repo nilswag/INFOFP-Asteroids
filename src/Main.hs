@@ -36,7 +36,6 @@ initialState :: GameState
 initialState = GameState {
     world = initialWorld,
     keyboard = initialKeyboard,
-
     score = 0
 }
 
@@ -52,19 +51,31 @@ initialWorld = World {
     },
 
     enemy = Enemy {
-        enemyX = 0,
-        enemyY = 0,
+        enemyX = 50,
+        enemyY = 50,
         enemyVel = (0.0, 0.0),
         enemyAngle = 0,
         enemyLives = 3
     },
 
-    asteroids = []
+    asteroids = [
+        Asteroid {
+            asteroidX = -50,
+            asteroidY = -50,
+            asteroidVel = (10.0, 10.0),
+            asteroidAngle = 0, 
+            asteroidType = AsteroidMedium, 
+            asteroidLives = 3
+            }
+    ], 
+
+    projectiles = []
 }
 
 initialKeyboard :: KeyboardState
 initialKeyboard = KeyboardState {
     w = False,
     a = False,
-    d = False
+    d = False,
+    space = False
 }
