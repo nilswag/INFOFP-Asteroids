@@ -21,9 +21,10 @@ renderAll s = pictures [renderPlayer s, renderAsteroids s, renderEnemy s, render
 renderPlayer :: GameState -> Picture
 renderPlayer state = renderEntity x y angle body
         where
-            x = getPlayerField playerX state
-            y = getPlayerField playerY state
-            angle = getPlayerField playerAngle state
+            p = player (world state)
+            x = playerX p
+            y = playerY p
+            angle = playerAngle p
             body = pictures [square 64 64 red, translate 32 0 (square 16 8 white)] 
             -- temporary player with direction indicator
 

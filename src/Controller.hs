@@ -41,7 +41,8 @@ axis pos neg = fromBool pos - fromBool neg
 
 -- physics step in main loop
 step :: Float -> GameState -> IO GameState
-step dt s = pure (((enemyStep dt) . (projectilesStep dt) . (asteroidsStep dt) . (playerStep dt)) s)
+step dt s = pure (steps s)
+    where steps = enemyStep dt . projectilesStep dt . asteroidsStep dt . playerStep dt
         
 -- player update
 playerStep :: Float -> GameState -> GameState

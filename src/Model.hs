@@ -102,10 +102,3 @@ updateProjectiles f state =
             projectiles = f (projectiles (world state))
         }
     }
-    
-
-
--- GETTERS
--- get player field by passing a custom function
-getPlayerField :: (Player -> a) -> GameState -> a
-getPlayerField f = f . player . world
