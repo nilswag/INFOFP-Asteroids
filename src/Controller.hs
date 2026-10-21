@@ -7,21 +7,17 @@ import Movement
 
 
 handleInput :: Event -> GameState -> IO GameState
--- handle w input
-handleInput (EventKey (Char 'w') Down _ _) state = pure state { keyboard = (keyboard state) { w = True } }
-handleInput (EventKey (Char 'w') Up _ _) state = pure state { keyboard = (keyboard state) { w = False } }
+handleInput (EventKey (Char char) Down _ _) state
+    | char == 'w' = pure state { keyboard = (keyboard state) { w = True } }
+    | char == 'a' = pure state { keyboard = (keyboard state) { a = True } }
+    | char == 'd' = pure state { keyboard = (keyboard state) { d = True } }
+    | char == 'p' = pure state { keyboard = (keyboard state) { space = True } }
 
--- handle a input
-handleInput (EventKey (Char 'a') Down _ _) state = pure state { keyboard = (keyboard state) { a = True } }
-handleInput (EventKey (Char 'a') Up _ _) state = pure state { keyboard = (keyboard state) { a = False } }
-
--- handle d input
-handleInput (EventKey (Char 'd') Down _ _) state = pure state { keyboard = (keyboard state) { d = True } }
-handleInput (EventKey (Char 'd') Up _ _) state = pure state { keyboard = (keyboard state) { d = False } }
-
--- handle space input
-handleInput (EventKey (Char 'p') Down _ _) state = pure state { keyboard = (keyboard state) { space = True } }
-handleInput (EventKey (Char 'p') Up _ _) state = pure state { keyboard = (keyboard state) { space = False } }
+handleInput (EventKey (Char char) Up _ _) state
+    | char == 'w' = pure state { keyboard = (keyboard state) { w = False } }
+    | char == 'a' = pure state { keyboard = (keyboard state) { a = False } }
+    | char == 'd' = pure state { keyboard = (keyboard state) { d = False } }
+    | char == 'p' = pure state { keyboard = (keyboard state) { space = False } }
 -- TODO: what is the char for spacebar???
 
 handleInput _ state = pure state
